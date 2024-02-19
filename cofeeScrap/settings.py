@@ -44,15 +44,17 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-#SPIDER_MIDDLEWARES = {
-#    "cofeeScrap.middlewares.CofeescrapSpiderMiddleware": 543,
-#}
+SPIDER_MIDDLEWARES = {
+    "cofeeScrap.middlewares.CofeescrapSpiderMiddleware": 543,
+     "scrapy_selenium.SeleniumMiddleware": 800,
+}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    "cofeeScrap.middlewares.CofeescrapDownloaderMiddleware": 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    "cofeeScrap.middlewares.CofeescrapDownloaderMiddleware": 543,
+     "scrapy_selenium.SeleniumMiddleware": 800,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -91,3 +93,7 @@ ROBOTSTXT_OBEY = True
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
+
+# scrapy_selenium driver
+SELENIUM_DRIVER_ARGUMENTS = ["--headless=new"] 
+SELENIUM_DRIVER_ARGUMENTS = [] 
