@@ -7,10 +7,10 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "cofeeScrap"
+BOT_NAME = "coffeeScrap"
 
-SPIDER_MODULES = ["cofeeScrap.spiders"]
-NEWSPIDER_MODULE = "cofeeScrap.spiders"
+SPIDER_MODULES = ["coffeeScrap.spiders"]
+NEWSPIDER_MODULE = "coffeeScrap.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -44,17 +44,17 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-SPIDER_MIDDLEWARES = {
-    "cofeeScrap.middlewares.CofeescrapSpiderMiddleware": 543,
-     "scrapy_selenium.SeleniumMiddleware": 800,
-}
+#SPIDER_MIDDLEWARES = {
+#    "cofeeScrap.middlewares.CofeescrapSpiderMiddleware": 543,
+#     "scrapy_selenium.SeleniumMiddleware": 800,
+#}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-DOWNLOADER_MIDDLEWARES = {
-    "cofeeScrap.middlewares.CofeescrapDownloaderMiddleware": 543,
-     "scrapy_selenium.SeleniumMiddleware": 800,
-}
+#DOWNLOADER_MIDDLEWARES = {
+#    "cofeeScrap.middlewares.CofeescrapDownloaderMiddleware": 543,
+#     "scrapy_selenium.SeleniumMiddleware": 800,
+#}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -89,11 +89,31 @@ DOWNLOADER_MIDDLEWARES = {
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 
+DOWNLOAD_HANDLERS = {
+    "http": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+    "https": "scrapy_playwright.handler.ScrapyPlaywrightDownloadHandler",
+}
+
 # Set settings whose default value is deprecated to a future-proof value
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 FEED_EXPORT_ENCODING = "utf-8"
 
+# PLAYWRIGHT_BROWSER_TYPE
+PLAYWRIGHT_BROWSER_TYPE = "chromium"
+PLAYWRIGHT_CDP_URL = "http://localhost:9222"
+
+# Playwright_launch
+PLAYWRIGHT_LAUNCH_OPTIONS = {
+    "headless": False,
+    "timeout": 20 * 1000,  # 20 seconds
+}
+
+PLAYWRIGHT_CDP_KWARGS = {
+    "slow_mo": 1000,
+    "timeout": 10 * 1000
+}
+
 # scrapy_selenium driver
-SELENIUM_DRIVER_ARGUMENTS = ["--headless=new"] 
-SELENIUM_DRIVER_ARGUMENTS = [] 
+#SELENIUM_DRIVER_ARGUMENTS = ["--headless=new"] 
+#SELENIUM_DRIVER_ARGUMENTS = [] 

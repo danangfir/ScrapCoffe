@@ -6,7 +6,7 @@
 import scrapy
 
 
-class CofeescrapItem(scrapy.Item):
+class coffeeScrap(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass
